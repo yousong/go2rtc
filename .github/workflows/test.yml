@@ -1,11 +1,6 @@
 name: Test Build and Run
 
 on:
-  push:
-    branches:
-      - '*'
-  pull_request:
-  merge_group:
   workflow_dispatch:
 
 jobs:

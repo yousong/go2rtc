@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - 'master'
+      - 'staging'
     tags:
       - 'v*'
 
@@ -19,7 +20,10 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ${{ github.repository }}
+          images: yousong/test
+          flavor: |
+            prefix=go2rtc-
+            latest=false
           tags: |
             type=ref,event=branch
             type=semver,pattern={{version}},enable=false
@@ -29,8 +33,9 @@ jobs:
         id: meta-hw
         uses: docker/metadata-action@v4
         with:
-          images: ${{ github.repository }}
+          images: yousong/test
           flavor: |
+            prefix=go2rtc-
             suffix=-hardware
             latest=false
           tags: |
